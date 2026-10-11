@@ -9,7 +9,7 @@ pub struct Keychain;
 
 /// The Keychain service that GitHub tokens are stored under, one item per organization.
 #[cfg(target_os = "macos")]
-const SERVICE: &str = "dev.runnerdashboard.github-token";
+const SERVICE: &str = "dev.afomera.fleet.github-token";
 
 #[cfg(target_os = "macos")]
 mod imp {

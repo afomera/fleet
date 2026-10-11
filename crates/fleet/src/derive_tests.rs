@@ -506,7 +506,9 @@ runners = [{ name = "second-01", directory = "runner-01" }]
         .map(|m| (m.id.as_str(), m.display_name.as_str()))
         .collect();
     assert_eq!(identities, [("inv:mini", "mini"), ("inv:second", "second")]);
-    assert!(view.other_machines.is_empty());
+    // Only this Mac is left over; the conflicting peer isn't listed again.
+    let others: Vec<_> = view.other_machines.iter().map(|m| m.id.as_str()).collect();
+    assert_eq!(others, ["ts:nSelf"]);
     for machine in &view.machines {
         let MachineConnection::Error { detail } = &machine.connection else {
             panic!("conflict must be an error")

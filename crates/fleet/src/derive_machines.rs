@@ -80,16 +80,7 @@ pub(super) fn assemble(
     now: DateTime<Utc>,
 ) -> Machines {
     let snapshot = obs.tailscale.as_ref().map(|t| &t.value);
-    let self_node = snapshot.and_then(|s| s.self_node_id.as_deref());
-    let peers: Vec<TailnetPeer> = snapshot
-        .map(|s| {
-            s.peers
-                .iter()
-                .filter(|p| Some(p.node_id.as_str()) != self_node)
-                .cloned()
-                .collect()
-        })
-        .unwrap_or_default();
+    let peers: Vec<TailnetPeer> = snapshot.map(|s| s.peers.clone()).unwrap_or_default();
     let ignored: HashSet<&str> = config
         .ignored_peers
         .iter()

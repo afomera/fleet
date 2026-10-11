@@ -3,7 +3,7 @@
 While the desktop app runs, it serves a read-only JSON API on `http://127.0.0.1:47622`, for
 scripts and AI agents on this Mac. Set `RUNNER_DASHBOARD_API_PORT` to change the port, or `0` to
 pick a free one. The app writes the URL it bound to
-`~/Library/Application Support/dev.runnerdashboard.app/local-api.json`. Turning the API off in
+`~/Library/Application Support/dev.afomera.fleet/local-api.json`. Turning the API off in
 Settings ▸ General takes effect the next time the app starts.
 
 `GET /` lists routes, capabilities, limits and interpretation rules. `GET /v1/openapi.json` is

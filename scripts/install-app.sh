@@ -30,11 +30,11 @@ if [ ! -w "$DEST_DIR" ]; then
 fi
 
 # Quit a running copy so the swap doesn't pull files out from under it.
-if osascript -e 'application id "dev.runnerdashboard.app" is running' 2>/dev/null | grep -q true; then
+if osascript -e 'application id "dev.afomera.fleet" is running' 2>/dev/null | grep -q true; then
   echo "Quitting Runner Dashboard…"
-  osascript -e 'tell application id "dev.runnerdashboard.app" to quit' || true
+  osascript -e 'tell application id "dev.afomera.fleet" to quit' || true
   i=0
-  while osascript -e 'application id "dev.runnerdashboard.app" is running' 2>/dev/null | grep -q true; do
+  while osascript -e 'application id "dev.afomera.fleet" is running' 2>/dev/null | grep -q true; do
     i=$((i + 1))
     [ $i -gt 20 ] && { echo "error: Runner Dashboard didn't quit" >&2; exit 1; }
     sleep 0.5
